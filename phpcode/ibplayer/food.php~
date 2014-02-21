@@ -1,0 +1,23 @@
+<?php
+ $name   = urldecode($_POST['name']);
+//database connection
+ $con=mysql_connect("127.0.0.1","root","root");
+mysql_select_db("connecttodb",$con)or die(mysql_error()); 
+      
+ 
+//inserting data into the table userinfo
+$result = mysql_query("INSERT INTO userinfo (name) VALUES ('$_POST['name']')");	
+if($result)
+{
+ echo("
+Input data is succeed");
+}
+else
+{
+ echo("
+Input data is fail");
+}
+       print " ==Server===
+       Response : $name";
+ 
+ ?>

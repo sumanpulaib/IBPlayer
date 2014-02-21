@@ -1,0 +1,32 @@
+<?php
+ $status   = urldecode($_POST['InternetStatus']);
+$datetime=urldecode($_POST['datetime']);
+$imei=urldecode($_POST['imei']);
+echo $status;
+echo $datetime;
+echo $imei;
+$con1=mysqli_connect("localhost","root","root","connecttodb");
+// Check connection
+if (mysqli_connect_errno())
+{
+	echo "Failed to connect to MySQL: " . mysqli_connect_error();
+}	
+$query="SELECT * FROM networkstatus WHERE imei like '%$imei%'";
+$result=mysqli_query($con1,$query);
+//echo "result".$result->num_rows;
+if($result->num_rows==0)
+{
+	//echo "If"; 
+	$res=mysqli_query($con1,"INSERT INTO networkstatus VALUES ($imei,'$datetime',$activityStatus)");
+
+  	mysqli_close($con1);
+}
+else
+{
+	//echo "else";
+	$res=mysqli_query($con1,"UPDATE networkstatus SET datetime='".$datetime."',activestatus='".$activityStatus."' WHERE imei=$imei");
+
+ 	mysqli_close($con1);
+}
+
+?> 

@@ -1,0 +1,49 @@
+<?php
+ $status   = urldecode($_POST['name']);
+$datetime=urldecode($_POST['datetime']);
+
+$con=mysqli_connect("localhost","root","root","connecttodb");
+// Check connection
+if (mysqli_connect_errno())
+  {
+  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+  }
+
+mysqli_query($con,"INSERT INTO networkstatus (datetime,InternetActiveStatus)
+VALUES ('$status','$datetime')");
+ //print "$name";
+//echo "hello"+$datetime;
+$con1=mysqli_connect("localhost","root","root","connecttodb");
+// Check connection
+if (mysqli_connect_errno())
+{
+	echo "Failed to connect to MySQL: " . mysqli_connect_error();
+}	
+$query="SELECT * FROM recentuserinfo WHERE imei like '%$imei%'";
+$result=mysqli_query($con1,$query);
+//echo "result".$result->num_rows;
+if($result->num_rows==0)
+{
+	//echo "If"; 
+	$res=mysqli_query($con1,"INSERT INTO recentuserinfo VALUES ($imei,'$datetime',$activityStatus)");
+if ($res) {
+          echo json_encode(array('Result' => 'AOK', 'Reason' => 'in if AOK'));
+       }
+       else {
+          echo json_encode(array('Result' => 'NOK', 'Reason' => 'in if NOK'));
+       }
+  	mysqli_close($con1);
+}
+else
+{
+	//echo "else";
+	$res=mysqli_query($con1,"UPDATE recentuserinfo SET datetime='".$datetime."',activestatus='".$activityStatus."' WHERE imei=$imei");
+if ($res) {
+          echo json_encode(array('Result' => 'AOK', 'Reason' => 'in else AOK'));
+       }
+       else {
+          echo json_encode(array('Result' => 'NOK', 'Reason' => 'in else NOK'));
+       }
+ 	mysqli_close($con1);
+}
+?> 

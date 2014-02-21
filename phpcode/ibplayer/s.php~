@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        
+   
+    <br />        
+</form>
+<form name="input" action="http://183.82.9.60/food/sms.php" method="post">
+Name: <input type="text" name="user"></br>
+MobileNumber: <input type="text" name="mnumber"></br>
+City: <input type="text" name="city"></br>
+
+    <label for="name">Country</label><select name="country" id="country">
+                                        <option value="1">Serbia</option>
+                                        <option value="2">France</option>
+                                        <option value="3">Italy</option>
+                                        </select>  
+<input type="submit" value="Submit">
+</form> 
+<td><label><a href="s.php">
+    <button>Save</button>
+
+            </table>
+        </div>
+    </body>
+</html> 

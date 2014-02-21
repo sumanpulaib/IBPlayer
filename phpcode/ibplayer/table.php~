@@ -1,0 +1,16 @@
+<?php
+// Connect to MySQL database
+
+$host="127.0.0.1";
+$userdb="root";
+$passdb="root";
+$namedb="connecttodb";
+$myconnect=mysql_connect($host, $userdb, $passdb) or exit("Could not connect to database");
+mysql_select_db($namedb, $myconnect);
+$dt=mysql_query("select * from userinfo");
+echo mysql_error();
+while($nt=mysql_fetch_array($dt)){
+echo "$nt[name]   $nt[datetime]<br>";
+echo "hello";	    
+}
+?>

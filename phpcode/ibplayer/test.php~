@@ -1,0 +1,19 @@
+<?php
+ $name   = urldecode($_POST['name']);
+$con=mysqli_connect("localhost","root","root","connecttodb");
+// Check connection
+if (mysqli_connect_errno())
+  {
+  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+  }
+print $name;
+$result = mysqli_query($con,"SELECT * FROM userinfo");
+
+while($row = mysqli_fetch_array($result))
+  {
+  echo $row['name'] ;
+  echo "<br>";
+  }
+
+mysqli_close($con);
+?> 

@@ -1,0 +1,15 @@
+<?php
+// Connect to MySQL database
+
+$host="localhost";
+$userdb="root";
+$passdb="root";
+$namedb="connecttodb";
+$myconnect=mysql_connect($host, $userdb, $passdb) or exit("Could not connect to database");
+mysql_select_db($namedb, $myconnect);
+$dt=mysql_query("select * from name");
+echo mysql_error();
+while($nt=mysql_fetch_array($dt)){
+echo "$nt[firstname] $nt[lastname] $nt[sex]<br>";     
+}
+?>

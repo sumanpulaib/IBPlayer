@@ -1,0 +1,19 @@
+<?php
+ $status   = urldecode($_POST['InternetStatus']);
+$datetime=urldecode($_POST['datetime']);
+
+
+$con=mysqli_connect("localhost","root","root","connecttodb");
+// Check connection
+if (mysqli_connect_errno())
+{
+	echo "Failed to connect to MySQL: " . mysqli_connect_error();
+}	
+
+	$res=mysqli_query($con,"INSERT INTO networkstatus (datetime,InternetActiveStatus) VALUES ('$datetime','$status')");
+
+  	mysqli_close($con);
+
+}
+
+?> 

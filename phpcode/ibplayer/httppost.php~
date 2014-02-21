@@ -1,0 +1,27 @@
+<?php
+ 
+       $name   = 'ok';
+       $datetime   = 'not ok';
+error_reporting (E_ALL);
+
+
+       //$con=mysqli_connect("localhost","root","root","connecttodb");
+
+$test1 = mysql_connect("localhost","root","root");
+if (!$test1)
+  {
+  //die('Could not connect: ' . mysql_error());
+echo "not connected";
+  }
+else
+{
+  echo "connected";
+}
+print " == POST DATA===
+       Name  : $name
+       datetime:$datetime";
+// Check connection
+
+
+
+ ?>
